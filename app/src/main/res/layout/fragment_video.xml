@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:progressActivity="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true">
+
+    <!--ProgressActivity用于状态页的控制 比如加载中  网络异常  无数据  适合任何页面-->
+    <com.xiaochao.lcrapiddeveloplibrary.viewtype.ProgressActivity
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--SpringView下拉刷新-->
+            <com.xiaochao.lcrapiddeveloplibrary.widget.SpringView
+                android:id="@+id/springview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:animateLayoutChanges ="false"
+                    android:background="#eeeeee" />
+            </com.xiaochao.lcrapiddeveloplibrary.widget.SpringView>
+
+        </LinearLayout>
+    </com.xiaochao.lcrapiddeveloplibrary.viewtype.ProgressActivity>
+
+</LinearLayout>

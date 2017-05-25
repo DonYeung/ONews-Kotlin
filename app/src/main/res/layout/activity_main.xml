@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.don.onews.ui.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:fitsSystemWindows="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <RelativeLayout
+            style="@style/ActivityTitle">
+            <TextView
+                android:id="@+id/hometab_toolbar_textview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="推荐"
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+    </FrameLayout>
+
+    <com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+
+        android:layout_alignParentBottom="true"
+        app:bnv_colored_background="true"
+        app:bnv_with_text="false"
+        app:bnv_shadow="true"
+        app:bnv_tablet="false"
+        app:bnv_viewpager_slide="true"
+        app:bnv_active_color="@color/colorPrimary"
+        app:bnv_active_text_size="@dimen/bottom_navigation_text_size_active"
+        app:bnv_inactive_text_size="@dimen/bottom_navigation_text_size_inactive"/>
+
+</LinearLayout>

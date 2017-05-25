@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:fitsSystemWindows="true"
+                app:navigationIcon="@mipmap/ic_arrow_back"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                app:theme="@style/ThemeOverlay.AppCompat"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            <TextView
+                android:id="@+id/hometab_toolbar_textview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="推荐"
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                />
+            </android.support.v7.widget.Toolbar>
+        </RelativeLayout>
+
+
+    <!--ProgressActivity用于状态页的控制 比如加载中  网络异常  无数据  适合任何页面-->
+    <com.xiaochao.lcrapiddeveloplibrary.viewtype.ProgressActivity
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/webViewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--SpringView下拉刷新-->
+            <com.xiaochao.lcrapiddeveloplibrary.widget.SpringView
+                android:id="@+id/springview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF">
+
+                <WebView
+                    android:id="@+id/web_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></WebView>
+
+            </com.xiaochao.lcrapiddeveloplibrary.widget.SpringView>
+
+        </LinearLayout>
+    </com.xiaochao.lcrapiddeveloplibrary.viewtype.ProgressActivity>
+</LinearLayout>

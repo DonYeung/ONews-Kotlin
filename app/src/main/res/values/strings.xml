@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ONews</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_setting">设置</string>
+
+    <!--新闻-->
+    <string name="news">新闻</string>
+    <string name="newstime">发布时间:%1$s</string>
+    <string name="newstitle">标题:%1$s</string>
+    <string name="news_from">%1$s %2$s</string>
+    <!--视频-->
+    <string name="videos">视频</string>
+    <string name="video_play_times">%1$s次播放</string>
+    <!--视频-->
+    <string name="search">搜索</string>
+    <!--视频-->
+    <string name="setting">设置</string>
+</resources>
