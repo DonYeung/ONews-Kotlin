@@ -19,7 +19,7 @@ import com.don.onews_kotlin.utils.baserx.RxManager
  */
 
 abstract class BaseFragment<T : BasePresenter<*, *>, E : BaseModel> : Fragment() {
-    protected var rootView: View? = nulls
+    protected var rootView: View? = null
     var mPresenter: T? = null
     var mModel: E? = null
     var mRxManager: RxManager? = null
