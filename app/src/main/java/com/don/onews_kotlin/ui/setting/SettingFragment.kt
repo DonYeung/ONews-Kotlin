@@ -1,31 +1,31 @@
 package com.don.onews_kotlin.ui.setting
 
+import android.view.View
 import android.widget.TextView
 
-import com.don.onews.R
-import com.don.onews.base.BaseFragment
 
-import butterknife.BindView
 import com.don.onews_kotlin.R
 import com.don.onews_kotlin.base.BaseFragment
+import com.don.onews_kotlin.ui.video.model.VideoModel
+import com.don.onews_kotlin.ui.video.presenter.VideoPresenter
 
 /**
  * Created by drcom on 2017/3/17.
  */
 
-class SettingFragment : BaseFragment<T, E>() {
-    @BindView(R.id.message)
-    internal var message: TextView? = null
+class SettingFragment: BaseFragment<VideoPresenter, VideoModel>() {
 
-    override fun getLayoutId(): Int {
+
+    private var message: TextView? = null
+
+    override fun getLayoutResource(): Int {
         return  R.layout.fragment_setting
     }
     override fun initPresenter() {
 
     }
 
-    override protected fun initView() {
-
+    override fun initView(view: View?) {
+        message = view?.findViewById(R.id.message) as TextView
     }
-
 }

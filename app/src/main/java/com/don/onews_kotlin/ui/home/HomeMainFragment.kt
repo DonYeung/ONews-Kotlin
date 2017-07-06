@@ -5,42 +5,44 @@ import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
+import android.view.View
 
 
-import java.util.ArrayList
-
-import butterknife.BindView
+import com.blankj.utilcode.utils.LogUtils
 import com.don.onews_kotlin.R
 import com.don.onews_kotlin.app.AppConstant
-import com.don.onews_kotlin.base.BaseFragment
-import com.don.onews_kotlin.base.BaseFragmentAdapter
+import com.don.onews_kotlin.base.*
 import com.don.onews_kotlin.utils.MyUtils
+import java.util.ArrayList
+
 
 /**
  * Created by drcom on 2017/3/21.
  */
 
-class HomeMainFragment : BaseFragment<T, E>() {
+class HomeMainFragment <T : BasePresenter<*, *>, E : BaseModel> : BaseFragment<T, E>() {
 
 
-    //    @BindView(R.id.toolbar)
-    //    Toolbar toolbar;
-    @BindView(R.id.tabs)
-    internal var tabs: TabLayout? = null
-    @BindView(R.id.view_pager)
-    internal var viewPager: ViewPager? = null
-    @BindView(R.id.fab)
-    internal var fab: FloatingActionButton? = null
+    private var tabs: TabLayout? = null
+
+    private var viewPager: ViewPager? = null
+
+    private var fab: FloatingActionButton? = null
     private var fragmentAdapter: BaseFragmentAdapter? = null
 
-    override fun getLayoutId(): Int {
-        return  R.layout.app_bar_home
+    override fun getLayoutResource(): Int {
+        return R.layout.app_bar_home
     }
+
     override fun initPresenter() {
 
     }
 
-    override protected fun initView() {
+    override fun initView(view: View) {
+        tabs = view.findViewById(R.id.tabs) as TabLayout
+        viewPager = view.findViewById(R.id.view_pagerr) as ViewPager
+        fab = view.findViewById(R.id.fab) as FloatingActionButton
+
         val channelType = ArrayList<String>()
         channelType.add(0, "headline")
         channelType.add(1, "list")
@@ -50,6 +52,7 @@ class HomeMainFragment : BaseFragment<T, E>() {
         channelType.add(5, "list")
         channelType.add(6, "list")
         channelType.add(7, "list")
+
         val channelId = ArrayList<String>()
         channelId.add(0, "T1348647909107")
         channelId.add(1, "T1348649580692")
@@ -59,6 +62,7 @@ class HomeMainFragment : BaseFragment<T, E>() {
         channelId.add(5, "T1348648517839")
         channelId.add(6, "T1348648650048")
         channelId.add(7, "T1370583240249")
+
         val channelName = ArrayList<String>()
         channelName.add(0, "头条")
         channelName.add(1, "科技")
@@ -74,11 +78,18 @@ class HomeMainFragment : BaseFragment<T, E>() {
             mNewsFragmentList.add(createListFragments(channelId[i], channelType[i]))
         }
 
-        fragmentAdapter = BaseFragmentAdapter(getChildFragmentManager(), mNewsFragmentList, channelName)
+        fragmentAdapter = BaseFragmentAdapter(childFragmentManager, mNewsFragmentList, channelName)
+
+
+
+        LogUtils.d("HomeMainFragment", "channelName:" + channelName[0])
+        LogUtils.d("HomeMainFragment", "mNewsFragmentList:" + mNewsFragmentList[0])
+        LogUtils.d("HomeMainFragment", "getChildFragmentManager:" + childFragmentManager)
         viewPager!!.adapter = fragmentAdapter
         tabs!!.setupWithViewPager(viewPager)
         MyUtils.dynamicSetTabLayoutMode(tabs)
         setPageChangeListener()
+
 
     }
 
@@ -102,7 +113,7 @@ class HomeMainFragment : BaseFragment<T, E>() {
         val bundle = Bundle()
         bundle.putString(AppConstant.NEWS_TYPE, channelType)
         bundle.putString(AppConstant.NEWS_ID, chanelId)
-        fragment.setArguments(bundle)
+        fragment.arguments = bundle
         return fragment
     }
 }

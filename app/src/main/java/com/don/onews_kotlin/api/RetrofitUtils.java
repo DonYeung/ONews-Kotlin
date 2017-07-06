@@ -27,12 +27,12 @@ public abstract class RetrofitUtils {
         if (null == mRetrofit) {
 
             if (null == mOkHttpClient) {
-                mOkHttpClient = OkHttp3Utils.INSTANCE.getOkHttpClient();
+                mOkHttpClient = OkHttp3Utils.getOkHttpClient();
             }
             //Retrofit2后使用build设计模式
             mRetrofit = new Retrofit.Builder()
                     //设置服务器路径
-                    .baseUrl(ApiConstant.INSTANCE.getHOST() + "/")
+                    .baseUrl(ApiConstant.HOST + "/")
                     //添加转化库，默认是Gson
                     .addConverterFactory(GsonConverterFactory.create())
                     //添加回调库，采用RxJava

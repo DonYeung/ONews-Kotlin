@@ -22,7 +22,7 @@
                 android:id="@+id/hometab_toolbar_textview_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="推荐"
+                android:text="@string/news"
                 android:textColor="@color/white"
                 android:textSize="22dp"
                 android:gravity="center"

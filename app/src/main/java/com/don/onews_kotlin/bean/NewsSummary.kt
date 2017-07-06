@@ -6,6 +6,10 @@ import android.os.Parcelable
 import java.util.ArrayList
 
 /**
+ * Created by drcom on 2017/3/27.
+ */
+
+/**
  * des:新闻消息实体类
  * Created by xsf
  * on 2016.06.13:05
@@ -137,4 +141,16 @@ class NewsSummary : Parcelable {
         `in`.readList(this.imgextra, ImgextraBean::class.java.classLoader)
     }
 
+    companion object {
+
+        val CREATOR: Parcelable.Creator<NewsSummary> = object : Parcelable.Creator<NewsSummary> {
+            override fun createFromParcel(source: Parcel): NewsSummary {
+                return NewsSummary(source)
+            }
+
+            override fun newArray(size: Int): Array<NewsSummary?> {
+                return arrayOfNulls(size)
+            }
+        }
+    }
 }

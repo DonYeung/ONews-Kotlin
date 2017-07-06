@@ -3,9 +3,7 @@ package com.don.onews_kotlin.ui.webview
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.support.v4.app.ActivityCompat.finishAfterTransition
 import android.support.v7.widget.Toolbar
-import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -15,35 +13,39 @@ import android.widget.LinearLayout
 import com.xiaochao.lcrapiddeveloplibrary.viewtype.ProgressActivity
 import com.xiaochao.lcrapiddeveloplibrary.widget.SpringView
 
-import butterknife.BindView
 import com.don.onews_kotlin.R
 import com.don.onews_kotlin.app.AppConstant
 import com.don.onews_kotlin.base.BaseActivity
+import com.don.onews_kotlin.base.BaseModel
+import com.don.onews_kotlin.base.BasePresenter
 
 /**
  * Created by drcom on 2017/3/22.
  */
 
-class WebViewBrowserActivity : BaseActivity<T, E>() {
-    @BindView(R.id.web_view)
-    internal var webView: WebView? = null
-    @BindView(R.id.springview)
-    internal var springview: SpringView? = null
-    @BindView(R.id.progress)
-    internal var progress: ProgressActivity? = null
-    @BindView(R.id.toolbar)
-    internal var toolbar: Toolbar? = null
-    @BindView(R.id.webViewLayout)
-    internal var webViewLayout: LinearLayout? = null
+class WebViewBrowserActivity<T : BasePresenter<*, *>, E : BaseModel> : BaseActivity<T, E>() {
+
+    private var webView: WebView? = null
+    private var springview: SpringView? = null
+    private var progress: ProgressActivity? = null
+    private var toolbar: Toolbar? = null
+    private var webViewLayout: LinearLayout? = null
 
     override fun getLayoutId(): Int {
         return R.layout.act_web_browser
     }
+
     override fun initPresenter() {
 
     }
 
     override fun initView() {
+        webView = findViewById(R.id.web_view) as WebView
+        springview = findViewById(R.id.springview) as SpringView
+        progress = findViewById(R.id.progress) as ProgressActivity
+        toolbar = findViewById(R.id.toolbar) as Toolbar
+        webViewLayout = findViewById(R.id.webViewLayout) as LinearLayout
+
         webView = WebView(mContext)
         webViewLayout?.addView(webView)
         setWebViewSettings()
@@ -103,7 +105,7 @@ class WebViewBrowserActivity : BaseActivity<T, E>() {
         })
     }
 
-    override  fun onPause() {
+    override fun onPause() {
         super.onPause()
         if (webView != null) {
             webView?.onPause()

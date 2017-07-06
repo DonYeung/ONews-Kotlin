@@ -22,7 +22,8 @@ import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.don.onews.base.BaseApplication;
+import com.don.onews_kotlin.base.BaseApplication;
+
 
 /**
  * @author 咖枯

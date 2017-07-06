@@ -65,7 +65,7 @@ class SplashActivity : Activity() {
 
     private fun jumpWhenCanClick() {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        Log.d("test", "this.hasWindowFocus():" + this.hasWindowFocus())
+        Log.d("SplashActivity", "this.hasWindowFocus():" + this.hasWindowFocus())
         if (canJumpImmediately) {
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)

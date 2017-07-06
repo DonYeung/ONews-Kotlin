@@ -15,7 +15,7 @@ class HomePresenter : HomeContract.Presenter() {
         isload = isLoad
         mRxManage.add(mModel?.loadHomeListData(type, key, startPage)
                 ?.subscribe(object : RxSubscriber<List<NewsSummary>>(mContext, false) {
-                    protected override fun _onNext(homeData: List<NewsSummary>) {
+                     override fun _onNext(homeData: List<NewsSummary>) {
 
                         if (isload) {
                             //api 列表数据等于20即到底
@@ -36,7 +36,7 @@ class HomePresenter : HomeContract.Presenter() {
 
                     }
 
-                    protected override fun _onError(message: String) {
+                     override fun _onError(message: String) {
                         LogUtils.d("message:" + message)
                         mView?.showLoadFailMsg(message)
 

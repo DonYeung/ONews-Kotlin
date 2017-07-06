@@ -6,11 +6,13 @@ import android.widget.TextView
 import com.blankj.utilcode.utils.LogUtils
 import com.don.onews_kotlin.R
 import com.don.onews_kotlin.base.BaseActivity
+import com.don.onews_kotlin.base.BaseModel
+import com.don.onews_kotlin.base.BasePresenter
 import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationItem
 import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationView
 import com.luseen.luseenbottomnavigation.BottomNavigation.OnBottomNavigationItemClickListener
 
-class MainActivity : BaseActivity<T, E>() {
+class MainActivity <T : BasePresenter<*, *>, E : BaseModel> : BaseActivity<T, E>() {
 
 
     private var hometabToolbarTextviewTitle: TextView? = null
@@ -19,20 +21,20 @@ class MainActivity : BaseActivity<T, E>() {
 
     private val mOnNavigationItemSelectedListener = OnBottomNavigationItemClickListener { item ->
         when (item) {
-            R.id.navigation_home -> {
-                hometabToolbarTextviewTitle?.setText(R.string.title_home)
+            0 -> {
+                hometabToolbarTextviewTitle?.setText(R.string.news)
                 setDefaultFragment(item)
             }
-            R.id.navigation_dashboard -> {
-                hometabToolbarTextviewTitle!!.setText(R.string.title_dashboard)
+            1 -> {
+                hometabToolbarTextviewTitle!!.setText(R.string.videos)
                 setDefaultFragment(item)
             }
-            R.id.navigation_notifications -> {
-                hometabToolbarTextviewTitle!!.setText(R.string.title_notifications)
+            2 -> {
+                hometabToolbarTextviewTitle!!.setText(R.string.search)
                 setDefaultFragment(item)
             }
-            R.id.navigation_setting -> {
-                hometabToolbarTextviewTitle!!.setText(R.string.title_setting)
+            3 -> {
+                hometabToolbarTextviewTitle!!.setText(R.string.setting)
                 setDefaultFragment(item)
             }
         }
